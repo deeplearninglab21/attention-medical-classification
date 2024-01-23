@@ -133,6 +133,25 @@ model.to(device)
 
 # **Customize loss functions**
 
+# In[ ]:
+
+
+import box_4_e
+# avg_x,avg_y,avg_w,avg_h=box_4_e.box_define(train_path)
+
+if args.task=='ne':
+    avg_x = 36 
+    avg_y = 106
+    avg_w = 156
+    avg_h = 79
+
+elif args.task=='nep':
+    avg_x = 36
+    avg_y = 106
+    avg_w = 156
+    avg_h = 80
+
+
 # In[49]:
 
 
@@ -161,7 +180,7 @@ class CustomLoss_ne(nn.Module):
 
 #             threshold = 0.1
             height, width = grayscale_cam.shape
-            bottom_right = grayscale_cam[height // 2:, width // 2:]
+            bottom_right = grayscale_cam[avg_y:avg_y+avg_h, avg_x:avg_x+avg_w]
 
             bottom_right_tensor = torch.from_numpy(bottom_right) 
             red_pixels_target = torch.sum(bottom_right_tensor > threshold)
@@ -303,7 +322,7 @@ class CustomLoss_nep(nn.Module):
             loss_attent=0
 
           elif labels[i].item()==1: # e.g. Effusion
-            bottom_right = grayscale_cam[height // 2:, width // 2:]
+            bottom_right = grayscale_cam[avg_y:avg_y+avg_h, avg_x:avg_x+avg_w]
             bottom_right_tensor = torch.from_numpy(bottom_right)  
             red_pixels_target = torch.sum(bottom_right_tensor > threshold) 
             total_pixels_target = bottom_right_tensor.numel()

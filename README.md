@@ -32,6 +32,13 @@ Data structure required for model training and evaluation (after running data_pr
     class2/
       img6.png
 ```
+Masks are predicted by pretrained segmentation U-Net model with Ottawa images (undisclosed)
+```
+/data/Ottawa_masks_512/
+  img1.png
+  img2.png
+  img3.png
+```
 
 ## Training and evaluation
 To run the classification task with cross entropy loss:
@@ -69,3 +76,6 @@ To train a ResNet50 model with proposed loss, binary classes (no finding vs pneu
 python resnet_loss_attent.py --path ../data/nofind_pneumothorax/ --nclass 2 --task np  --thresh 0.9 --isAdaptive
 ```
 
+### Note
+
+In practical, the bounding box for Effusion in the paper is obtained based on the masks corresponding to the images in the training data. As Ottawa is a private dataset, information related to it is replaced by fixed values in this repository.
