@@ -1,5 +1,5 @@
 # Attention-Based Medical Knowledge Injection in Deep Image Classification Models
-This repository contains the implementation of experiments about Attention-Based Medical Knowledge Injection in Deep Image Classification.
+This repository contains the implementation of experiments about Attention-Based Medical Knowledge Injection in Deep Image Classification. The appendix of this paper can be accessed through [View PDF](docs/Appendix_Medical_Attention.pdf)
 
 ## Data preparation
 Download and extract the NIH chest x-ray data from https://nihcc.app.box.com/v/ChestXray-NIHCC/folder/36938765345. All compressed packages of images can be downloaded in batch through the .py script contained in the "images" folder. Structure after downloading and extracting all files of images for NIH data:
